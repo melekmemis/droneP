@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-Wall",
+                "-Wextra",
+                "-g3",
+
+                "-I", "C:\\droneP\\Core\\Inc",
+
+                "C:\\droneP\\Core\\Src\\telemetry.c",
+
+                "-o",
+                "C:\\droneP\\Core\\Src\\output\\telemetry.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
