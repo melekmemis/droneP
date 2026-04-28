@@ -12,10 +12,14 @@
 
                 "-I", "C:\\droneP\\Core\\Inc",
 
-                "C:\\droneP\\Core\\Src\\telemetry.c",
+                "C:\\droneP\\Core\\Src\\Telemetry\\telemetry.c",
+                "C:\\droneP\\Core\\Src\\app\\app.c",
+                "C:\\droneP\\Core\\Src\\comm\\pSerial.c",
+                "C:\\droneP\\Core\\Src\\system\\systemState.c",
+                "C:\\droneP\\Core\\Src\\main.c",
 
                 "-o",
-                "C:\\droneP\\Core\\Src\\output\\telemetry.exe"
+                "C:\\droneP\\Core\\Src\\output\\main.exe"
             ],
             "group": {
                 "kind": "build",
