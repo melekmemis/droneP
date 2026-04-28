@@ -63,7 +63,7 @@ while running:
                     case 147:
                         print(f"Mesaj yakalandı: {msg.get_type()}, ID: {msgId}")
                         batStatD = msg.to_dict()
-                        print(f"Mesaj içeriği: {sysStatD}")
+                        print(f"Mesaj içeriği: {batStatD}")
 
 if __name__ == "__main__":
     keyboard_listener()

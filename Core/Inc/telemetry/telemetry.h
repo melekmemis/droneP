@@ -4,7 +4,7 @@
 #include "stdio.h"
 #include <stdint.h>
 
-void telemetryInit (uint8_t systemId, uint8_t componentId);
+void telemetryInit(uint8_t systemId, uint8_t componentId);
 
 void telemetrySendHeartbeat(void);
 void telemetrySendSysStatus(void);

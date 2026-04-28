@@ -12,7 +12,7 @@
 
                 "-I", "C:\\droneP\\Core\\Inc",
 
-                "C:\\droneP\\Core\\Src\\Telemetry\\telemetry.c",
+                "C:\\droneP\\Core\\Src\\telemetry\\telemetry.c",
                 "C:\\droneP\\Core\\Src\\app\\app.c",
                 "C:\\droneP\\Core\\Src\\comm\\pSerial.c",
                 "C:\\droneP\\Core\\Src\\system\\systemState.c",

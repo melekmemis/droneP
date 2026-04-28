@@ -10,7 +10,7 @@ uint8_t buffer[MAVLINK_MAX_PACKET_LEN];
 uint8_t sysId = 0;
 uint8_t cmpId = 0;
 
-void telemetryInit (uint8_t systemId, uint8_t componentId){
+void telemetryInit(uint8_t systemId, uint8_t componentId){
     sysId = systemId;
     cmpId = componentId;
 }
@@ -34,6 +34,19 @@ void telemetrySendSysStatus(void){
                                 state->batPrst, state->dropRateC0mm, state->errComm,
                                 state->erCnt1, state->erCnt2, state->erCnt3, state->erCnt4,
                                 0, 0, 0);
+
+    uint16_t len = mavlink_msg_to_send_buffer(buffer, &msg);
+    writeData(buffer, len);
+}
+
+void telemetrySendBatteryStatus(void){
+    BatState_t *batState = batStateGet();
+
+    mavlink_msg_battery_status_pack(sysId, cmpId, &msg,
+                                    batState->id, batState->batFunc, batState->batType,
+                                    batState->batTemp, batState->voltages, batState->cBat,
+                                    batState->cConsumed, batState->eConsumed,
+                                    batState->batRmn, 0, 0, batState->voltagesExt, 0, 0);
 
     uint16_t len = mavlink_msg_to_send_buffer(buffer, &msg);
     writeData(buffer, len);

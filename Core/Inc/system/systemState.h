@@ -18,8 +18,24 @@ uint16_t erCnt2;
 uint16_t erCnt3;
 uint16_t erCnt4;
 } DroneState_t;
+static DroneState_t state;
+
+typedef struct {
+uint8_t id;
+uint8_t batFunc;
+uint8_t batType;
+int16_t batTemp;
+uint16_t voltages[10];
+int16_t cBat;
+int32_t cConsumed;
+int32_t eConsumed;
+int8_t batRmn;
+uint16_t voltagesExt[10];
+} BatState_t;
+static BatState_t batState;
 
 DroneState_t* systemStateGet(void);
+BatState_t* batStateGet(void);
 void systemStateInit(void);
 
 #endif

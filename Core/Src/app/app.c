@@ -11,8 +11,12 @@ void appInit(void){
 }
 
 void appRun(void){
+    DroneState_t *state = systemStateGet();
+    state->vBat++;
+
     telemetrySendHeartbeat();
     telemetrySendSysStatus();
+    telemetrySendBatteryStatus();
     Sleep(1000);
 }
 
