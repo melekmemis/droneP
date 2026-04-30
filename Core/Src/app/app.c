@@ -17,6 +17,9 @@ void appRun(void){
     telemetrySendHeartbeat();
     telemetrySendSysStatus();
     telemetrySendBatteryStatus();
+    telemetrySendAttitude();
+    telemetrySendGpsRaw();
+    //telemetryRecv();
     Sleep(1000);
 }
 

@@ -34,8 +34,41 @@ uint16_t voltagesExt[10];
 } BatState_t;
 static BatState_t batState;
 
+typedef struct {
+uint32_t timeBootMs;
+float roll;
+float pitch;
+float yaw;
+float rollspeed;
+float pitchspeed;
+float yawspeed;
+} SensorState_t;
+static SensorState_t sensorState;
+
+typedef struct {
+uint64_t timeUsec;
+uint8_t fixType;
+int32_t lat;
+int32_t lon;
+int32_t alt;
+uint16_t eph; 
+uint16_t epv;
+uint16_t vel;
+uint16_t cog;
+uint8_t satellitesVisible;
+int32_t altEllipsoid;
+uint32_t hAcc;
+uint32_t vAcc;
+uint32_t velAcc;
+uint32_t hdgAcc;
+uint16_t yaw;
+} GpsState_t;
+static GpsState_t gpsState;
+
 DroneState_t* systemStateGet(void);
 BatState_t* batStateGet(void);
+SensorState_t* sensorStateGet(void);
+GpsState_t* gpsStateGet(void);
 void systemStateInit(void);
 
 #endif

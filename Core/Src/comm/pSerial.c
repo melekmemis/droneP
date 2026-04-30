@@ -5,7 +5,7 @@ DWORD written;
 DWORD bytesRead;
 
 void activatePort(void){
-    hSerial = CreateFile("COM7", GENERIC_WRITE, 0,
+    hSerial = CreateFile("COM7", GENERIC_WRITE | GENERIC_READ, 0,
                          NULL, OPEN_EXISTING, 0, NULL);
 
     if (hSerial == INVALID_HANDLE_VALUE) {
@@ -25,14 +25,14 @@ void activatePort(void){
 
 uint16_t writeData(uint8_t *buffer, uint16_t len){
     WriteFile(hSerial, buffer, len, &written, NULL);
-    printf("Data gonderildi: %lu byte\n", written);
     return written;
 }
 
-uint16_t readFile(uint8_t *buffer, uint16_t maxLen){
-    ReadFile(hSerial, buffer, maxLen, &bytesRead, NULL);
-    printf("Bytes alındı: %lu byte\n", maxLen);
-    return bytesRead;
+uint16_t readData(uint8_t *buffer, uint16_t maxLen){
+    if (ReadFile(hSerial, buffer, maxLen, &bytesRead, NULL)){
+        printf("Bytes alındı: %lu byte\n", bytesRead);
+        return bytesRead;
+    }
 }
 
 void closePort(void){

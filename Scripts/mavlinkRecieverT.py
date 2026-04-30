@@ -38,6 +38,8 @@ while running:
                 compId = msg.get_srcComponent()
                 print(f"sysId: {sysId}, compId: {compId}")
                 msgId = msg.get_msgId()
+                # print(f"message Id: {msgId}")
+                gyroP = 0; accelP = 0; magnP = 0; absPrsP = 0; diffPrsP = 0; gpsP = 0
                 match msgId:
                     case 0:
                         print(f"Mesaj yakalandı: {msg.get_type()}, ID: {msgId}")
@@ -49,21 +51,31 @@ while running:
                         print(f"Mesaj içeriği: {sysStatD}")
                         print(f"voltage: {sysStatD['voltage_battery']/1000}V")
                         if sysStatD['onboard_control_sensors_present'] & 1:
-                            print("gyro")
+                            gyroP = 1
                         if sysStatD['onboard_control_sensors_present'] & 2:
-                            print("accel")
+                            accelP = 1
                         if sysStatD['onboard_control_sensors_present'] & 4:
-                            print("magn")
+                            magnP = 1
                         if sysStatD['onboard_control_sensors_present'] & 8:
-                            print("absolute pressure")
+                            absPrsP = 1
                         if sysStatD['onboard_control_sensors_present'] & 16:
-                            print("differential pressure")
+                            diffPrsP = 1
                         if sysStatD['onboard_control_sensors_present'] & 32:
-                            print("gps")
+                            gpsP = 1
+                        print(f"Sensors Present: Gyro: {gyroP}, Accel: {accelP}, Magn: {magnP}, Abs Press: {absPrsP}, Diff Press: {diffPrsP}, GPS: {gpsP}")
                     case 147:
                         print(f"Mesaj yakalandı: {msg.get_type()}, ID: {msgId}")
                         batStatD = msg.to_dict()
                         print(f"Mesaj içeriği: {batStatD}")
+                    case 30:
+                        print(f"Mesaj yakalandı: {msg.get_type()}, ID: {msgId}")
+                        attitudeD = msg.to_dict()
+                        print(f"Mesaj içeriği: {attitudeD}")
+                    case 24:
+                        print(f"Mesaj yakalandı: {msg.get_type()}, ID: {msgId}")
+                        gpsStatD = msg.to_dict()
+                        print(f"Mesaj içeriği: {gpsStatD}")
+                    
 
 if __name__ == "__main__":
     keyboard_listener()

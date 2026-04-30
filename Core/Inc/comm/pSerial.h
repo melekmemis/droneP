@@ -7,7 +7,7 @@
 
 void activatePort(void);
 uint16_t writeData(uint8_t *buffer, uint16_t len);
-uint16_t readFile(uint8_t *buffer, uint16_t maxLen);
+uint16_t readData(uint8_t *buffer, uint16_t maxLen);
 void closePort(void);
 
 #endif

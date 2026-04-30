@@ -38,7 +38,17 @@ void systemStateInit(void){
     batState.cConsumed = -1;
     batState.eConsumed = -1;
     batState.batRmn = 86;
+
+    sensorState.timeBootMs = 0;
+    sensorState.roll = 0;
+    sensorState.pitch = 0;
+    sensorState.yaw = 0;
+    sensorState.rollspeed = 0;
+    sensorState.pitchspeed = 0;
+    sensorState.yawspeed = 0;
 }
 
 DroneState_t* systemStateGet(void){ return &state; }
 BatState_t* batStateGet(void){ return &batState; }
+SensorState_t* sensorStateGet(void){return &sensorState;}
+GpsState_t* gpsStateGet(void){return &gpsState;}

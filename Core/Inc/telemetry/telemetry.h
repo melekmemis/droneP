@@ -13,4 +13,6 @@ void telemetrySendAttitude(void);
 void telemetrySendGpsRaw(void);
 void telemetryUpdate(uint32_t now);
 
+void telemetryRecv(void);
+
 #endif
